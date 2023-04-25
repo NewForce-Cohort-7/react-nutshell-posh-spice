@@ -1,4 +1,5 @@
 import { Outlet, Route, Routes } from "react-router-dom"
+import { MessageForm } from "../messages/MessageForm"
 
 
 export const ApplicationViews = () => {
@@ -8,11 +9,12 @@ export const ApplicationViews = () => {
             <>
                 <h1>Nutshell</h1>
                 <div>Dashboards for Nutty People</div>
+                {/* <MessageForm /> */}
 
                 <Outlet />
             </>
         }>
-            <Route path="" element={<></>} /> 
+            <Route path="" element={ <MessageForm /> } /> 
         </Route>
     </Routes>
     )
