@@ -11,3 +11,9 @@ export const GetMessages = (messageToSendToAPI) => {
     })
         .then(res => res.json())
 }
+
+// FETCH Function - MessageList.js
+export const GetMessageAndUserDetails = () => {
+    return fetch (`http://localhost:8088/messages?_expand=user`)
+                    .then(response => response.json())
+}

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { GetMessages } from "./MessageAPIManager";
+import "./Message.css"
 
 export const MessageForm = () => {
 
@@ -40,7 +41,7 @@ export const MessageForm = () => {
                         <input
                             required autoFocus
                             type="text"
-                            className="form-control"
+                            className="message" // className="form-control" gives it a specific styling
                             placeholder="Type message here"
                             value={message.message}
                             onChange={
