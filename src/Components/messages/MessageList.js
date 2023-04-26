@@ -21,6 +21,13 @@ export const MessageList = () => {
                     })
             }, [] //messages goes into brackets to show live edits
         )
+
+        useEffect(
+            () => {
+                console.log(messages)
+            },
+            [messages]
+        )
     
     return <>
                 <article className="messageList">
