@@ -7,23 +7,19 @@ import { GetMessageAndUserDetails } from "./MessageAPIManager"
 
 export const MessageList = () => {
         const [messages, setMessages] = useState([])
+        const [users, setUsers] = useState([])
         const navigate = useNavigate()
         const localNutshellUser = localStorage.getItem("nutshell_user")
         const nutshellUserObject = JSON.parse(localNutshellUser)
 
-        // const handleSaveButtonClick = (event) => {
-        //     event.preventDefault()
-        //     console.log("You clicked me!")
-        // }
-
-
+        
         useEffect(
             () => {
                 GetMessageAndUserDetails()
                     .then((messageArray) => {
                         setMessages(messageArray)
                     })
-            }, [] //messages goes into brackets to show live edits (ticket #18)
+            }, [] //messages goes into brackets to show live edits
         )
     
     return <>

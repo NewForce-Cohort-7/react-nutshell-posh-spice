@@ -1,13 +1,13 @@
-//Created by Kiersten White
-
-import { MessageEdit } from "./MessageEdit";
-import { MessageForm } from "./MessageForm";
+import { useEffect, useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import "./Message.css"
 import { MessageList } from "./MessageList";
 
-export const MessageContainer = () => {
-    return <>
-        <MessageForm />
-        <MessageList />
-        {/* <MessageEdit /> */}
-    </>
+export const Messages = () => {
+    const [messages, setMessages] = useState([])
+    const [users, setUsers] = useState([])
+    const navigate = useNavigate()
+
+    const localNutshellUser = localStorage.getItem("nutshell_user")
+    const nutshellUserObject = JSON.parse(localNutshellUser)
 }

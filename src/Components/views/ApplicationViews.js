@@ -1,7 +1,7 @@
 import { Outlet, Route, Routes } from "react-router-dom"
 import { MessageForm } from "../messages/MessageForm"
 import { MessageList } from "../messages/MessageList"
-import { MessageContainer } from "../messages/Message"
+import { MessageContainer } from "../messages/MessageContainer"
 import { MessageEdit } from "../messages/MessageEdit"
 
 
