@@ -17,7 +17,7 @@ export const TaskList = () => {
                 setTasks(taskArray)
             })
         },
-        [tasks]
+        []
     )
 
     useEffect(

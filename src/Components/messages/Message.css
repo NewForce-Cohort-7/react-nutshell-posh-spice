@@ -1,0 +1,17 @@
+/*Created by Kiersten White*/
+
+.messageForm {
+    border: black solid 2px;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+.messageList {
+    border: black solid 2px;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+.editMessage_button {
+    margin: .5rem;
+}
