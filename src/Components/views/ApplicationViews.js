@@ -18,7 +18,8 @@ export const ApplicationViews = () => {
             <>
                 <h1>Nutshell</h1>
                     <div>Dashboards for Nutty People</div>
-                <TaskContainer/>                        <MessageContainer />
+                <TaskContainer/>                        
+                <MessageContainer />
                 
                         <Outlet />
 
