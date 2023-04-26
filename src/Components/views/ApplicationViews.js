@@ -1,6 +1,8 @@
 import { Outlet, Route, Routes } from "react-router-dom"
 import { MessageForm } from "../messages/MessageForm"
 import { MessageList } from "../messages/MessageList"
+import { MessageContainer } from "../messages/Message"
+import { MessageEdit } from "../messages/MessageEdit"
 
 
 export const ApplicationViews = () => {
@@ -9,16 +11,16 @@ export const ApplicationViews = () => {
         <Route path="/" element={
             <>
                 <h1>Nutshell</h1>
-                <div>Dashboards for Nutty People</div>
-                <MessageForm />
-                <MessageList />
-
-                <Outlet />
+                    <div>Dashboards for Nutty People</div>
+                        <MessageContainer />
+                
+                        <Outlet />
             </>
         }>
-            {/* <Route path="" element={ <MessageForm /> } /> */}
-            {/* <Route path="" element={ <MessageList /> } />   NOTE: For some reason, it will only go to the first route...*/} 
+           
         </Route>
+
+            <Route path="/editmessage/:messageId" element={<MessageEdit />}></Route>
     </Routes>
     )
 }
