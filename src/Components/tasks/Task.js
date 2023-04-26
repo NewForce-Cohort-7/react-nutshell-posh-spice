@@ -28,11 +28,8 @@ export const Task = ({taskObject}) => {
             dateCompleted: new Date()   
         }
 
-        return editTask(taskObject)
-            .then(r => r.json())
-            .then(()=>{
-                getTasks()
-            })
+        return editTask(taskObject, copy)
+            .then(getTasks)
 
     }
     return <section className="task" key={`task--${taskObject.id}`}>

@@ -42,7 +42,8 @@ export const TaskList = () => {
     {
         tasks.map(
             (task) => 
-                <Task
+                <Task 
+                key={`task--${task.id}`} 
                 setTasks={setTasks}
                 currentUser={nutshellUserObject}
                 taskObject={task}
@@ -58,6 +59,7 @@ export const TaskList = () => {
     {
         tasks.map(
             (task) => <Task
+            key={`task--${task.id}`}
             setTasks={setTasks}
             currentUser={nutshellUserObject}
             taskObject={task}

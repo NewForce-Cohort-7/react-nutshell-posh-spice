@@ -58,7 +58,7 @@ export const TaskForm = ({setShowForm}) => {
                         required autoFocus
                         type="date"
                         className="form-control"
-                        placeholder= {Date}
+                        placeholder="When to Complete"
                         value={task.completionDate}
                         onChange={
                             (evt) => {
