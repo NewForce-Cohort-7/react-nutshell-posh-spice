@@ -1,4 +1,6 @@
 import { Outlet, Route, Routes } from "react-router-dom"
+import { EventsList } from "../events/EventList"
+import { EventContainer } from "../events/EventContainer"
 
 
 export const ApplicationViews = () => {
@@ -12,7 +14,7 @@ export const ApplicationViews = () => {
                 <Outlet />
             </>
         }>
-            <Route path="" element={<></>} /> 
+            <Route path="" element={<EventContainer/>} /> 
         </Route>
     </Routes>
     )
