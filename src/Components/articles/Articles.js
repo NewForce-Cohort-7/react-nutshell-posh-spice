@@ -12,7 +12,7 @@ export const Articles = () => {
     const localNutshellUser = localStorage.getItem("nutshell_user")
     const nutshellUserObject = JSON.parse(localNutshellUser)
     const navigate = Navigate
-    const submitArticle = (e) => {
+    const submitArticle = (e) =>{
         e.preventDefault()
         return fetch("http://localhost:8088/articles", {
             method: "POST",
@@ -22,6 +22,15 @@ export const Articles = () => {
             body: JSON.stringify({title:title, synopsis:synopsis, url:url})
         })
             .then(res => res.json())
+            .then(data => {
+                if (data.hasOwnProperty("id")) {
+                    fetch("http://localhost:8088/articles")
+                    .then (response => response.json())
+                    .then((articles) => {
+                        setArticles(articles)
+                    })                    
+                }
+            })
     }
 
     useEffect(
@@ -47,17 +56,18 @@ export const Articles = () => {
     )
 
     return (
-        <main className="container--articles">
+        <main className="main--container">
             <h1> Articles </h1>
-            {articles.length > 0 && articles.map(article => {
+           <div className="container--articles"> {articles.length > 0 && articles.map(article => {
                 return (
-                    <article key={article.id}>
+                    <article className="article" key={article.id}>
                         <h2>{article.title}</h2>
                         <p>{article.synopsis}</p>
                         <a href={article.url}>Read More</a>
                     </article>
                 )
             })}
+            </div>
 
 
 
