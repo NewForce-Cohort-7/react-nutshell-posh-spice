@@ -1,3 +1,6 @@
+//Created by whole group using screenshare
+// Sets up the routes for Login, Register, Nav Bar, and Application Views
+
 import "./Nutshell.css"
 import { Outlet, Route, Routes } from 'react-router-dom';
 import { Login } from './auth/Login';
