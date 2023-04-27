@@ -1,7 +1,6 @@
 //Created by Kiersten White; exports MessageForm, which renders the JSX to submit a new message
 
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { GetMessages } from "./MessageAPIManager";
 import "./Message.css"
 
@@ -13,7 +12,6 @@ export const MessageForm = () => {
         message: "",
     })
 
-    const navigate = useNavigate()
     const localNutshellUser = localStorage.getItem("nutshell_user")
     const nutshellUserObject = JSON.parse(localNutshellUser)
 

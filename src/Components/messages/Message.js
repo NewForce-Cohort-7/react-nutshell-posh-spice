@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { ThumbsCounter } from "./ThumbsCounter";
 import "./Message.css"
-import { MessageList } from "./MessageList";
 
 export const Messages = ({messageObject, currentUser}) => {
 
@@ -10,19 +9,17 @@ export const Messages = ({messageObject, currentUser}) => {
     return( 
     
         messageObject.userId === currentUser.id ?
-    
-    
-    <section className="individualMessage" key={`message--${messageObject.id}`}>
-    <strong>{messageObject.user.username}:</strong> {messageObject.message} 
-        <button
-        onClick={() => navigate(`/editMessage/${messageObject.id}`)}
-        className="editMessage_button">Edit</button>
+            <section className="individualMessage" key={`message--${messageObject.id}`}>
+                <strong>{messageObject.user.username}:</strong> {messageObject.message} 
+                    < ThumbsCounter />
+                    <button onClick={() => navigate(`/editMessage/${messageObject.id}`)}
+                        className="editMessage_button">Edit</button> 
             </section>
 
-        : <section className="individualMessage" key={`message--${messageObject.id}`}>
-            <strong>{messageObject.user.username}:</strong> {messageObject.message} 
+        : 
+            <section className="individualMessage" key={`message--${messageObject.id}`}>
+                <strong>{messageObject.user.username}:</strong> {messageObject.message}
+                < ThumbsCounter />
             </section>
-
     )
-
 }
