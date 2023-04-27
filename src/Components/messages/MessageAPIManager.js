@@ -1,4 +1,5 @@
 //Created by Kiersten White
+// Holds all functions to get information from the API
 
 //POST Function - MessageForm.js
 export const GetMessages = (messageToSendToAPI) => {
@@ -14,7 +15,7 @@ export const GetMessages = (messageToSendToAPI) => {
 
 // FETCH Function - MessageList.js
 export const GetMessageAndUserDetails = () => {
-    return fetch (`http://localhost:8088/messages?_expand=user`)
+    return fetch (`http://localhost:8088/messages?_expand=user&_embed=reactions`)
                     .then(response => response.json())
 }
 

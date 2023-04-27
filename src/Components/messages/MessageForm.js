@@ -1,4 +1,5 @@
-//Created by Kiersten White; exports MessageForm, which renders the JSX to submit a new message
+//Created by Kiersten White
+//Exports MessageForm, which renders the JSX to submit a new message
 
 import { useState } from "react";
 import { GetMessages } from "./MessageAPIManager";
@@ -6,7 +7,6 @@ import "./Message.css"
 
 export const MessageForm = () => {
 
-    
     const [message, update] = useState({
         username: "",
         message: "",

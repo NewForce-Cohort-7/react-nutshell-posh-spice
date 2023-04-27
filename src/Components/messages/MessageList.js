@@ -1,4 +1,5 @@
-//Created by Kiersten White - Contains all functions and elements to update message list
+//Created by Kiersten White
+// Retrieves Message and User Details from the API, sends props to the children
 
 import { useState, useEffect } from "react"
 import "./Message.css"
@@ -16,7 +17,7 @@ export const MessageList = () => {
                     .then((messageArray) => {
                         setMessages(messageArray)
                     })
-            }, [] //messages goes into brackets to show live edits
+            }, [] //messages goes into brackets to show live edits, which is not *technically* the correct way to do it but works
         )
 
             

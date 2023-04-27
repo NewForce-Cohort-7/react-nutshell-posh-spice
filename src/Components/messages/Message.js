@@ -1,3 +1,6 @@
+// Created by Kiersten White
+// Generates JSX for how to display each message in the Message List, including a conditional that only shows the edit button to the author of the message
+
 import { useNavigate } from "react-router-dom";
 import { ThumbsCounter } from "./ThumbsCounter";
 import "./Message.css"
