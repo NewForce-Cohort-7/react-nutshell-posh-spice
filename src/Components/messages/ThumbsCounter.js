@@ -2,15 +2,22 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { GetIndividualMessages, GetMessageAndReplace } from "./MessageAPIManager";
 
-export const ThumbsCounter = () => {
+export const ThumbsCounter = ({messageObject, currentUser}) => {
 
-    // const [message, editMe]
+    // need to add, once the button is clicked, we are saving (updating) the API messages
     let [likes, setLikes] = useState(0)
     let [dislikes, setDislikes] = useState(0)
 
-    const handleLike = () => {
-        setLikes(likes + 1)
-    };
+    useEffect(() => {
+        GetIndividualMessages(messageId)
+            .then((likes) => {
+                setLikes( likes + 1)
+            })
+    }, [])
+
+    // const handleLike = () => {
+    //     setLikes(likes + 1)
+    // };
 
     const handleDislikes = () => {
         setDislikes(dislikes +1)
