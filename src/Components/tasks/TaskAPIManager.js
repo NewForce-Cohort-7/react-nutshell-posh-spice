@@ -16,6 +16,7 @@ export const sendTask = (taskData) => {
         },
         body:JSON.stringify(taskData)
     })
+    .then (r=>r.json())
 }
 export const deleteTask = (taskObject) => {
     return fetch(`http://localhost:8088/tasks/${taskObject.id}`, {
