@@ -1,4 +1,4 @@
-.event:first-child{
+.event__list:first-child > div > .event{
     font: 24px bold;
     background: lightgrey;
 }

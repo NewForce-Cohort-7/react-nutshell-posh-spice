@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { createNewEvent } from "./EventApiManager"
+import { createNewEvent, getEvents } from "./EventApiManager"
 import { useNavigate } from "react-router-dom"
 
 export const EventForm = ({ setShowForm }) => {
@@ -27,6 +27,7 @@ const handleCreateNewEventClick = (e) => {
         .then(() => {
             setShowForm(false)
         })
+        .then(getEvents())
 };
 return (
     <form className="eventForm">

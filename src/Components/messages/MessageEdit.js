@@ -1,3 +1,6 @@
+//Created by Kiersten White
+// Retrieves data from the API and returns JSX for a form to edit a message
+
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { GetIndividualMessages, GetMessageAndReplace } from "./MessageAPIManager";
