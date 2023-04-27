@@ -11,7 +11,7 @@ let todaysDate = new Date().toISOString().split('T')[0]
     return ( 
     todaysDate > eventObject.date ? 
 
-        <section className="finished__event" key={`event--${eventObject.id}`}>
+        <section className="event__finished" key={`event--${eventObject.id}`}>
         <header className="event__header">{eventObject.name}</header>
             <div>{eventObject.date}</div>
             <div>{eventObject.location}</div> 
@@ -20,7 +20,6 @@ let todaysDate = new Date().toISOString().split('T')[0]
     :
 
     !showEdit ? 
-   
          <section className="event" key={`event--${eventObject.id}`}>
         <header className="event__header">{eventObject.name}</header>
             <div>{eventObject.date}</div>
