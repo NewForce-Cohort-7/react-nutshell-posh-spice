@@ -5,6 +5,7 @@ import { Register } from './auth/Register';
 import { Authorized } from "./views/Authorized";
 import { NavBar } from "./nav/NavBar";
 import { ApplicationViews } from "./views/ApplicationViews";
+import { Articles } from "./articles/Articles";
 
 function Nutshell() {
   return (
@@ -12,6 +13,7 @@ function Nutshell() {
           <Route>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/articles" element={<Articles />} />
 
             <Route path="*" element={
 			          <Authorized>
