@@ -84,7 +84,7 @@ const percentage = (total > 0) ? (completedCount/total) * 100 : 0
             : <>
                 <TaskForm setShowForm={setShowForm} setTasks={setTasks}/>
                 <h1 className="todo__header">To-Do List</h1>
-
+                <h1 className="task__percentage">{percentage.toFixed(2)}% of Tasks Complete</h1>
                 <article className="tasks">
 
                     <button className="newTask__button" onClick={

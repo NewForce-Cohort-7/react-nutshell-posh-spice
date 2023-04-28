@@ -11,7 +11,9 @@ export const Task = ({taskObject, setTasks}) => {
             return (
             
             !taskObject.complete?
-            <button onClick={
+            <button
+                style={{}}
+                onClick={
                 ()=>completeTask(taskObject)
                 .then(() => getTasks())
                 .then((newTaskArray) => setTasks(newTaskArray))
