@@ -1,0 +1,9 @@
+.container--articles {
+    display: flex;
+}
+
+.article {
+    border: dotted 2px pink;
+    margin: 0.5rem;
+    padding: 0.5rem;
+}

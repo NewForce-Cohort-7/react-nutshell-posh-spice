@@ -12,7 +12,11 @@ export const NavBar = () => {
 
     <ul className="navbar">
          {
-                localStorage.getItem("nutshell_user")
+                <li className="navbar__item active">
+                <Link className="navbar__link" to="/articles">Articles</Link>
+            </li>}
+
+                {localStorage.getItem("nutshell_user")
                     ? <li className="navbar__item navbar__logout">
                         <Link className="navbar__link" to="" onClick={() => {
                             localStorage.removeItem("nutshell_user")
