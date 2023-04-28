@@ -6,16 +6,16 @@ import { Task } from "./Task"
 export const TaskList = () => {
     const [showForm, setShowForm] = useState(false)
     const [tasks, setTasks] = useState([])
-    const [filter, setFiltered] = useState([])
+    const [filteredTasks, setFiltered] = useState([])
 
     const localNutshellUser = localStorage.getItem("nutshell_user")
     const nutshellUserObject = JSON.parse(localNutshellUser)
     useEffect(
         () => {
             getTasks()
-            .then((taskArray)=>{
-                setTasks(taskArray)
-            })
+                .then((taskArray) => {
+                    setTasks(taskArray)
+                })
         },
         []
     )
@@ -27,49 +27,88 @@ export const TaskList = () => {
         },
         [tasks]
     )
+    const incompleteTasks = filteredTasks.filter(task => !task.complete)
+    const completedTasks = filteredTasks.filter(task => task.complete)
+
     return (
         !showForm ?
-    
-    <>
-    <h1 className="todo__header">To-Do List</h1>
+            //THIS IS THE SECTION WHERE ONLY THE BUTTON FOR CREATE TASKS
+            <>
+                <h1 className="todo__header">To-Do List</h1>
 
-    <article className="tasks">
-    
-<button className="newTask__button" onClick={
-        ()=> setShowForm(true)}>Create New Task</button>
+                <article className="tasks">
 
+                    <button className="newTask__button" onClick={
+                        () => setShowForm(true)}>Create New Task</button>
 
-    {
-        tasks.map(
-            (task) => 
-                <Task 
-                key={`task--${task.id}`} 
-                setTasks={setTasks}
-                currentUser={nutshellUserObject}
-                taskObject={task}
-                />
-            )
-        }
-    
-    </article>
-    </>
-:<>
-<TaskForm setShowForm={setShowForm}/>
-<article className="tasks">
-    {
-        tasks.map(
-            (task) => <Task
-            key={`task--${task.id}`}
-            setTasks={setTasks}
-            currentUser={nutshellUserObject}
-            taskObject={task}
-            />
-        )
-    }
+                    <h2 className="todo__subheader">Incomplete Tasks</h2>
+                    <section className="tasks__incomplete">
+                        {
+                            incompleteTasks.map(
+                                (task) =>
+                                    <Task
+                                        key={`task--${task.id}`}
+                                        setTasks={setTasks}
+                                        currentUser={nutshellUserObject}
+                                        taskObject={task}
+                                    />
+                            )
+                        }
+                    </section>
+                    <h2 className="todo__subheader">Completed Tasks</h2>
+                    <section className="tasks__completed">
+                        {
+                            completedTasks.map(
+                                (task) =>
+                                    <Task
+                                        key={`task--${task.id}`}
+                                        setTasks={setTasks}
+                                        currentUser={nutshellUserObject}
+                                        taskObject={task}
+                                    />
+                            )
+                        }
+                    </section>
+                </article>
+            </>
+            : <>
+                <TaskForm setShowForm={setShowForm} />
+                <h1 className="todo__header">To-Do List</h1>
 
-</article>
-</>
+                <article className="tasks">
 
+                    <button className="newTask__button" onClick={
+                        () => setShowForm(true)}>Create New Task</button>
 
+                    <h2 className="todo__subheader">Incomplete Tasks</h2>
+                    <section className="tasks__incomplete">
+                        {
+                            incompleteTasks.map(
+                                (task) =>
+                                    <Task
+                                        key={`task--${task.id}`}
+                                        setTasks={setTasks}
+                                        currentUser={nutshellUserObject}
+                                        taskObject={task}
+                                    />
+                            )
+                        }
+                    </section>
+                    <h2 className="todo__subheader">Completed Tasks</h2>
+                    <section className="tasks__completed">
+                        {
+                            completedTasks.map(
+                                (task) =>
+                                    <Task
+                                        key={`task--${task.id}`}
+                                        setTasks={setTasks}
+                                        currentUser={nutshellUserObject}
+                                        taskObject={task}
+                                    />
+                            )
+                        }
+                    </section>
+                </article>
+            </>
     )
 }
