@@ -8,16 +8,23 @@ export const Task = ({taskObject, setTasks}) => {
     const navigate = useNavigate()
 
     const FinishButton = () => {
-            return <button onClick={()=>completeTask(taskObject)} className="task__finish">Complete Task</button>
+            return (
+            
+            !taskObject.complete?
+            <button onClick={
+                ()=>completeTask(taskObject)
+                .then(() => getTasks())
+                .then((newTaskArray) => setTasks(newTaskArray))
+            } className="task__finish">Complete Task</button>
+            : ""
+            )
         }
 
     const DeleteButton = () => {
             return <button onClick={
                 () => deleteTask(taskObject)
-                .then(()=>{
-                    getTasks()
-                })
-            }
+                .then(() => getTasks())
+                .then((newTaskArray) => setTasks(newTaskArray))}
               className="task__delete">Delete</button>
     }
 
