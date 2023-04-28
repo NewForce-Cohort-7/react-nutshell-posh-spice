@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import "./Articles.css"
 import { Navigate } from "react-router-dom"
+import { Article } from "./Article"
 
 export const Articles = () => {
     const [isFormOpen, setIsFormOpen] = useState(false)
@@ -8,10 +9,9 @@ export const Articles = () => {
     const [synopsis, setSynopsis] = useState("")
     const [url, setUrl] = useState("")
     const [articles, setArticles] = useState([])
-    const [userFilter, setUserFilter] = useState("")
     const localNutshellUser = localStorage.getItem("nutshell_user")
     const nutshellUserObject = JSON.parse(localNutshellUser)
-    const navigate = Navigate
+    
     const submitArticle = (e) =>{
         e.preventDefault()
         return fetch("http://localhost:8088/articles", {
@@ -19,7 +19,7 @@ export const Articles = () => {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({title:title, synopsis:synopsis, url:url})
+            body: JSON.stringify({title:title, synopsis:synopsis, url:url, userId:nutshellUserObject.id})
         })
             .then(res => res.json())
             .then(data => {
@@ -27,32 +27,25 @@ export const Articles = () => {
                     fetch("http://localhost:8088/articles")
                     .then (response => response.json())
                     .then((articles) => {
-                        setArticles(articles)
+                        const myArticles = articles.filter(article => article.userId === nutshellUserObject.id)
+                        setArticles(myArticles)
+                        setIsFormOpen(false)
                     })                    
                 }
             })
     }
+
 
     useEffect(
         () => {
             fetch("http://localhost:8088/articles")
                 .then (response => response.json())
                 .then((articles) => {
-                    setArticles(articles)
+                    const myArticles = articles.filter(article => article.userId === nutshellUserObject.id)
+                    setArticles(myArticles)
                 })
         },
         [] // When this array is empty, you are observing initial component state
-    )
-
-    useEffect(
-        () => {
-            if (articles) {
-                //For customers
-                const myArticles = articles.filter(article => article.userId === nutshellUserObject.id)
-                setUserFilter(myArticles || [])
-            }
-        },
-        [articles]
     )
 
     return (
@@ -60,11 +53,7 @@ export const Articles = () => {
             <h1> Articles </h1>
            <div className="container--articles"> {articles.length > 0 && articles.map(article => {
                 return (
-                    <article className="article" key={article.id}>
-                        <h2>{article.title}</h2>
-                        <p>{article.synopsis}</p>
-                        <a href={article.url}>Read More</a>
-                    </article>
+                    <Article setArticles={setArticles} article={article} key={article.id + "--article"}></Article>
                 )
             })}
             </div>
@@ -101,4 +90,3 @@ export const Articles = () => {
         </main>
     )
 }
-
