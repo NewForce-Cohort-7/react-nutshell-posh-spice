@@ -1,5 +1,5 @@
 import { Link, useFetcher, useNavigate } from "react-router-dom"
-import { deleteTask, editTask, getTasks } from "./TaskAPIManager"
+import { completeTask, deleteTask, editTask, getTasks } from "./TaskAPIManager"
 import { useState } from "react"
 import { TaskEdit } from "./TaskEdit"
 
@@ -8,7 +8,7 @@ export const Task = ({taskObject, setTasks}) => {
     const navigate = useNavigate()
 
     const FinishButton = () => {
-            return <button onClick={CloseTask} className="task__finish">Complete Task</button>
+            return <button onClick={()=>completeTask(taskObject)} className="task__finish">Complete Task</button>
         }
 
     const DeleteButton = () => {
@@ -21,19 +21,6 @@ export const Task = ({taskObject, setTasks}) => {
               className="task__delete">Delete</button>
     }
 
-
-    const CloseTask = () => {
-        const copy = {
-            userId: taskObject.userId,
-            description: taskObject.description,
-            complete: true,
-            dateCompleted: new Date()   
-        }
-
-        return editTask(taskObject, copy)
-            .then(getTasks)
-
-    }
     return (
     !showEdit ?
     <section className="task" key={`task--${taskObject.id}`}>

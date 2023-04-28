@@ -35,3 +35,16 @@ export const editTask = (taskObject) => {
     })
         .then (r=>r.json())
 }
+
+export const completeTask = (taskObject) => {
+    return fetch(`http://localhost:8088/tasks/${taskObject.id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                complete: true
+            })
+        })
+        .then(response => response.json())
+}
