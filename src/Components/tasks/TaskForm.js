@@ -3,7 +3,7 @@ import { getTasks, sendTask } from "./TaskAPIManager"
 
 
 
-export const TaskForm = ({setShowForm}) => {
+export const TaskForm = ({setShowForm, setTasks}) => {
 
     const [task, update] = useState({
         description:"",
@@ -25,6 +25,8 @@ export const TaskForm = ({setShowForm}) => {
             completionDate: task.completionDate
         }
     return sendTask(taskToSendToAPI)
+        .then(() => getTasks())
+        .then((newTaskArray) => setTasks(newTaskArray))
         .then(()=>{
             setShowForm(false)
         })

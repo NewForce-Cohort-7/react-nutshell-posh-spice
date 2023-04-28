@@ -30,12 +30,22 @@ export const TaskList = () => {
     const incompleteTasks = filteredTasks.filter(task => !task.complete)
     const completedTasks = filteredTasks.filter(task => task.complete)
 
+let completedCount = 0
+let total = 0
+total = tasks.length
+
+completedCount = tasks.filter(task => {
+    return task.complete
+}).length
+
+const percentage = (total > 0) ? (completedCount/total) * 100 : 0
+
     return (
         !showForm ?
             //THIS IS THE SECTION WHERE ONLY THE BUTTON FOR CREATE TASKS
             <>
                 <h1 className="todo__header">To-Do List</h1>
-
+                <h1 className="task__percentage">{percentage.toFixed(2)}% of Tasks Complete</h1>
                 <article className="tasks">
 
                     <button className="newTask__button" onClick={
@@ -72,7 +82,7 @@ export const TaskList = () => {
                 </article>
             </>
             : <>
-                <TaskForm setShowForm={setShowForm} />
+                <TaskForm setShowForm={setShowForm} setTasks={setTasks}/>
                 <h1 className="todo__header">To-Do List</h1>
 
                 <article className="tasks">
