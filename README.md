@@ -98,3 +98,5 @@ localStorage.removeItem("activeUser")
    * Short paragraphs
    * Bulleted lists
 7. Strive for consistency.
+
+![ERD](public/Posh%20Spice%20Nutshell%20ERD.png)
